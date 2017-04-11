@@ -25,7 +25,7 @@
 {
     [textField resignFirstResponder];
     NSLog(@"string");
-
+//设置选中与正常颜色
     if (self.Style == QQTagStyleNone) {
         self.backgroundColor = [UIColor lightGrayColor];
         self.Style = QQTagStyleSlect;
@@ -48,6 +48,10 @@
     
     return YES;
     
+}
+- (void)setShowColor:(UIColor *)ShowColor
+{
+    self.backgroundColor = ShowColor;
 }
 //设置文字的边距
 - (CGRect)textRectForBounds:(CGRect)bounds {

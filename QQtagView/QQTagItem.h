@@ -28,5 +28,6 @@ typedef NS_ENUM(NSInteger,QQTagStyle){
 @property (nonatomic,assign) QQTagStyle Style;
 @property (nonatomic,assign) id<QQTagItemDelegate> mydelagete;
 @property(nonatomic) UIEdgeInsets padding;
+@property (nonatomic,strong) UIColor *ShowColor;
 
 @end

@@ -75,12 +75,12 @@
         UIView *rightVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 5, 16, 16)];
         imageView.image = [UIImage imageNamed:@"qqqq"];
-//        rightVeiw.backgroundColor = [UIColor cyanColor];
         [rightVeiw addSubview:imageView];
         Item.rightView = rightVeiw;
         Item.rightViewMode = UITextFieldViewModeAlways;
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 26);//字体与控件的距离
         Item.Style = QQTagStyleEditNone;
+        Item.ShowColor = [UIColor purpleColor];
     }else{
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 10);//字体与控件的距离
     }
