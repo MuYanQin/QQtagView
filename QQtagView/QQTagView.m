@@ -80,7 +80,7 @@
         Item.rightViewMode = UITextFieldViewModeAlways;
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 26);//字体与控件的距离
         Item.Style = QQTagStyleEditNone;
-        Item.ShowColor = [UIColor purpleColor];
+        Item.EditShowColor = SelectColor;
     }else{
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 10);//字体与控件的距离
     }

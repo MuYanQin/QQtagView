@@ -6,6 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
+//选中的颜色
+#define SelectColor  [UIColor purpleColor]
+//显示的颜色
+#define ShowColor  [UIColor lightGrayColor]
 
 typedef NS_ENUM(NSInteger,QQTagStyle){
     QQTagStyleSlect = 0,// 不可编辑的选中状态
@@ -28,6 +32,6 @@ typedef NS_ENUM(NSInteger,QQTagStyle){
 @property (nonatomic,assign) QQTagStyle Style;
 @property (nonatomic,assign) id<QQTagItemDelegate> mydelagete;
 @property(nonatomic) UIEdgeInsets padding;
-@property (nonatomic,strong) UIColor *ShowColor;
+@property (nonatomic,strong) UIColor * EditShowColor;
 
 @end

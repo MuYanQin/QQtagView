@@ -16,7 +16,7 @@
         self.font = [UIFont systemFontOfSize:15];
         self.textAlignment = NSTextAlignmentCenter;
         self.delegate = self;
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = ShowColor;
     }
     return self;
 }
@@ -27,10 +27,10 @@
     NSLog(@"string");
 //设置选中与正常颜色
     if (self.Style == QQTagStyleNone) {
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = ShowColor;
         self.Style = QQTagStyleSlect;
     }else if(self.Style == QQTagStyleSlect){
-        self.backgroundColor = [UIColor purpleColor];
+        self.backgroundColor = SelectColor ;
         self.Style = QQTagStyleNone;
     }else {
         
@@ -49,9 +49,9 @@
     return YES;
     
 }
-- (void)setShowColor:(UIColor *)ShowColor
+- (void)setEditShowColor:(UIColor *)EditShowColor
 {
-    self.backgroundColor = ShowColor;
+    self.backgroundColor = EditShowColor;
 }
 //设置文字的边距
 - (CGRect)textRectForBounds:(CGRect)bounds {
