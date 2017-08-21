@@ -57,10 +57,7 @@
 }
 - (void)QQTagView:(QQTagView *)QQTagView sizeChange:(CGRect)newSize
 {
-//    CGRect frame = self.tagForSelectContainer.frame;
-//    frame.origin.y = self.QQSelect.frame.origin.y;
-//    frame.size.height =newSize.size.height + 20;
-//    self.tagForSelectContainer.frame = frame;
+
 }
 
 - (void)didReceiveMemoryWarning {
