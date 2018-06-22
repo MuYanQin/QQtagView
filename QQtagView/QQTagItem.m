@@ -16,6 +16,7 @@
         self.font = [UIFont systemFontOfSize:15];
         self.textAlignment = NSTextAlignmentCenter;
         self.delegate = self;
+        self.tintColor = [UIColor clearColor];
         self.backgroundColor = ShowColor;
     }
     return self;
@@ -40,6 +41,18 @@
         [self.mydelagete QQTagItem:self];
     }
     
+}
+- (void)changeItemType:(QQTagStyle)tagType
+{
+    if (tagType == QQTagStyleNone) {
+        self.backgroundColor = ShowColor;
+        _Style = QQTagStyleSlect;
+    }else if(tagType == QQTagStyleSlect){
+        self.backgroundColor = SelectColor ;
+        _Style = QQTagStyleNone;
+    }else {
+        
+    }
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 

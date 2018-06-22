@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BBB191420DCC7A000433EA7 /* CustomBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBB191220DCC7A000433EA7 /* CustomBtn.m */; };
 		521E725F1E9C739A00CFAE12 /* qqqq.png in Resources */ = {isa = PBXBuildFile; fileRef = 521E725E1E9C739A00CFAE12 /* qqqq.png */; };
 		5244F0831E98B1CE0009E7C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5244F0821E98B1CE0009E7C9 /* main.m */; };
 		5244F0861E98B1CE0009E7C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5244F0851E98B1CE0009E7C9 /* AppDelegate.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BBB191220DCC7A000433EA7 /* CustomBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBtn.m; sourceTree = "<group>"; };
+		4BBB191320DCC7A000433EA7 /* CustomBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBtn.h; sourceTree = "<group>"; };
 		521E725E1E9C739A00CFAE12 /* qqqq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qqqq.png; sourceTree = "<group>"; };
 		5244F07E1E98B1CE0009E7C9 /* QQtagView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQtagView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5244F0821E98B1CE0009E7C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				5244F0991E98B2120009E7C9 /* QQTagItem.m */,
 				5244F09B1E98B52B0009E7C9 /* QQTagView.h */,
 				5244F09C1E98B52B0009E7C9 /* QQTagView.m */,
+				4BBB191320DCC7A000433EA7 /* CustomBtn.h */,
+				4BBB191220DCC7A000433EA7 /* CustomBtn.m */,
 				521E725E1E9C739A00CFAE12 /* qqqq.png */,
 			);
 			path = QQtagView;
@@ -166,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5244F0891E98B1CE0009E7C9 /* ViewController.m in Sources */,
+				4BBB191420DCC7A000433EA7 /* CustomBtn.m in Sources */,
 				5244F0861E98B1CE0009E7C9 /* AppDelegate.m in Sources */,
 				5244F0831E98B1CE0009E7C9 /* main.m in Sources */,
 				5244F09A1E98B2120009E7C9 /* QQTagItem.m in Sources */,

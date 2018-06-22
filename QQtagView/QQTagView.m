@@ -7,7 +7,7 @@
 //
 
 #import "QQTagView.h"
-
+#import "CustomBtn.h"
 @implementation QQTagView
 
 - (instancetype)init
@@ -42,6 +42,14 @@
         [QQTagItem removeFromSuperview];
     }
 }
+- (void)changeTagStatus:(QQTagStyle)TagStyle string:(NSString *)string
+{
+    for (QQTagItem *item in self.subviews) {
+        if([self stringIsEquals:item.text to:string]) {
+            [item changeItemType:TagStyle];
+        }
+    }
+}
 - (void)remove:(NSString *)text
 {
     for (QQTagItem *item in self.subviews) {
@@ -73,9 +81,12 @@
      */
     if (self.Style == QQTagStyleEditSlect) {
         UIView *rightVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 5, 16, 16)];
-        imageView.image = [UIImage imageNamed:@"qqqq"];
-        [rightVeiw addSubview:imageView];
+        CustomBtn *button = [CustomBtn buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(4, 5, 16, 16);
+        [button setBackgroundImage:[UIImage imageNamed:@"qqqq"] forState:UIControlStateNormal];
+        button.info = Item;
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [rightVeiw addSubview:button];
         Item.rightView = rightVeiw;
         Item.rightViewMode = UITextFieldViewModeAlways;
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 26);//字体与控件的距离
@@ -92,7 +103,10 @@
     [self addSubview:Item];
 
 }
-
+- (void)buttonClick:(CustomBtn *)btn
+{
+    [self QQTagItem:btn.info];
+}
 - (void)layoutSubviews {
     [UIView beginAnimations:nil context:nil];
     CGFloat paddingRight = self.padding.right;
