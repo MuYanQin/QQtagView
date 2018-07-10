@@ -18,6 +18,7 @@
         self.padding = UIEdgeInsetsMake(10, 10, 10, 10);//控件的距离
 //        self.tagTextPadding = UIEdgeInsetsMake(5, 10, 5, 10);
         self.Style = QQTagStyleNone;
+        self.selectTagsArray = [NSMutableArray array];
         self.backgroundColor =[UIColor redColor];
     }
     return self;
@@ -40,6 +41,7 @@
     
     if (QQTagItem.Style == QQTagStyleEditNone) {
         [QQTagItem removeFromSuperview];
+        [self.selectTagsArray removeObject:QQTagItem.text];
     }
 }
 - (void)changeTagStatus:(QQTagStyle)TagStyle string:(NSString *)string
@@ -55,17 +57,22 @@
     for (QQTagItem *item in self.subviews) {
         if([self stringIsEquals:item.text to:text]) {
             [item removeFromSuperview];
+            [self.selectTagsArray removeObject:text];
         }
     }
 }
 - (void)addTags:(NSArray *)tags
 {
+    [self.selectTagsArray removeAllObjects];
+    self.selectTagsArray = tags.mutableCopy;
     for (int i = 0; i< tags.count; i++) {
         [self addLabel:tags[i] tag:i];
     }
 }
 - (void)addLabel:(NSString *)text tag:(NSInteger)tag {
-    
+    if (![self.selectTagsArray containsObject:text]) {
+        [self.selectTagsArray addObject:text];
+    }
     CGRect frame = CGRectZero;
     if(self.subviews && self.subviews.count > 0) {
         frame = [self.subviews lastObject].frame;
