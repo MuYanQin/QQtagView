@@ -22,9 +22,7 @@
 @property (nonatomic,weak) id<QQTagViewDelegate> delegate;
 
 @property (nonatomic,assign) QQTagStyle Style;
-/*
- 状态为QQTagStyleEditSlect的View  选中的标签数组
- */
+
 @property (nonatomic , strong) NSMutableArray * selectTagsArray;//
 @property(nonatomic, assign) CGFloat tagSpace;// space between two tag, default is 10
 @property(nonatomic, assign) CGFloat tagFontSize; // default is 12

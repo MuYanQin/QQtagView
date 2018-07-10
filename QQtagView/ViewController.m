@@ -23,12 +23,12 @@
     
     [super viewDidLoad];
 
-    self.QQSelect = [[QQTagView alloc] init];
-    self.QQSelect.frame = CGRectMake(0, 0, kMKScreenWidth, 0);
-    self.QQSelect.delegate = self;
-    self.QQSelect .tag = 1;
-    [self.QQSelect addTags:@[@"6754674567", @"88888888", @"999",@"43243434",@"341234",@"777",@"743432523577"]];
-    [self.view addSubview:self.QQSelect];
+//    self.QQSelect = [[QQTagView alloc] init];
+//    self.QQSelect.frame = CGRectMake(0, 0, kMKScreenWidth, 0);
+//    self.QQSelect.delegate = self;
+//    self.QQSelect .tag = 1;
+//    [self.QQSelect addTags:@[@"6754674567", @"88888888", @"999",@"43243434",@"341234",@"777",@"743432523577"]];
+//    [self.view addSubview:self.QQSelect];
 
     self.HeaderView = [[QQTagView alloc] initWith:QQTagStyleEditSlect];
     self.HeaderView.frame = CGRectMake(0, 250, kMKScreenWidth, 0);
@@ -41,7 +41,7 @@
 }
 - (void)QQTagView:(QQTagView *)QQTagView QQTagItem:(QQTagItem *)QQTagItem
 {
-    NSLog(@"%ld",QQTagItem.Style);
+    NSLog(@"%@",QQTagView.selectTagsArray);
     if (QQTagView.tag ==1) {
         if (QQTagItem.Style == QQTagStyleNone) {
             [self.HeaderView addLabel:QQTagItem.text tag:1];
