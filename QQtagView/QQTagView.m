@@ -17,13 +17,13 @@
         self.tagSpace = 10;
         self.padding = UIEdgeInsetsMake(10, 10, 10, 10);//控件的距离
 //        self.tagTextPadding = UIEdgeInsetsMake(5, 10, 5, 10);
-        self.Style = QQTagStyleNone;
+        self.Style = QQViewStyleNone;
         self.selectTagsArray = [NSMutableArray array];
         self.backgroundColor =[UIColor redColor];
     }
     return self;
 }
-- (instancetype)initWith:(QQTagStyle)TagViewStyle
+- (instancetype)initWith:(QQViewStyle)TagViewStyle
 {
     self = [super init];
     self.tagFontSize = 12;
@@ -36,25 +36,30 @@
 }
 - (void)QQTagItem:(QQTagItem *)QQTagItem
 {
-    if (QQTagItem.Style == QQTagStyleEditNone) {
-        [QQTagItem removeFromSuperview];
-        [self.selectTagsArray removeObject:QQTagItem.text];
-    }else{
-        if (QQTagItem.Style == QQTagStyleSlect) {
-            [self.selectTagsArray removeObject: QQTagItem.text];
-        }else{
-            [self.selectTagsArray addObject:QQTagItem.text];
+    if (self.Style == QQViewStyleSelected) {
+        if (QQTagItem.Style == QQTagStyleNone) {
+            [QQTagItem removeFromSuperview];
         }
+    }else{
+        if (QQTagItem.Style == QQTagStyleNone) {
+            [self.selectTagsArray removeObject:QQTagItem.text];
+        }
+    }
+    if (QQTagItem.Style == QQTagStyleSelected) {
+        [self.selectTagsArray addObject:QQTagItem.text];
+    }else{
+        [self.selectTagsArray removeObject: QQTagItem.text];
     }
     if([self.delegate respondsToSelector:@selector(QQTagView:QQTagItem:)]) {
         [self.delegate QQTagView:self QQTagItem:QQTagItem];
     }
 }
-- (void)changeTagStatus:(QQTagStyle)TagStyle string:(NSString *)string
+- (void)changeItemString:(NSString *)string
 {
     for (QQTagItem *item in self.subviews) {
         if([self stringIsEquals:item.text to:string]) {
-            [item changeItemType:TagStyle];
+            [item changeItemType:item.Style];
+            break;
         }
     }
 }
@@ -64,6 +69,7 @@
         if([self stringIsEquals:item.text to:text]) {
             [item removeFromSuperview];
             [self.selectTagsArray removeObject:text];
+            break;
         }
     }
 }
@@ -71,12 +77,11 @@
 {
     [self.selectTagsArray removeAllObjects];
     for (int i = 0; i< tags.count; i++) {
-        [self addLabel:tags[i] tag:i];
+        [self addLabel:tags[i]];
     }
-    NSLog(@"%ld",self.Style);
 }
-- (void)addLabel:(NSString *)text tag:(NSInteger)tag {
-    if (self.Style == QQTagStyleEditSlect && ![self.selectTagsArray containsObject:text]) {
+- (void)addLabel:(NSString *)text {
+    if (self.Style == QQViewStyleSelected && ![self.selectTagsArray containsObject:text]) {
         [self.selectTagsArray addObject:text];
     }
 
@@ -93,7 +98,7 @@
      [button setImage:[UIImage imageNamed:@"clear_icon"] forState:UIControlStateNormal];
      Item.clearButtonMode = UITextFieldViewModeAlways;
      */
-    if (self.Style == QQTagStyleEditSlect) {
+    if (self.Style == QQViewStyleSelected) {
         UIView *rightVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
         CustomBtn *button = [CustomBtn buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(4, 5, 16, 16);
@@ -104,13 +109,13 @@
         Item.rightView = rightVeiw;
         Item.rightViewMode = UITextFieldViewModeAlways;
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 26);//字体与控件的距离
-        Item.Style = QQTagStyleEditNone;
-        Item.EditShowColor = SelectColor;
+        Item.Style = QQTagStyleSelected;
+        Item.EditShowColor = selectedColor;
     }else{
+        Item.Style = QQTagStyleNone;
         Item.padding = UIEdgeInsetsMake(10, 10, 10, 10);//字体与控件的距离
     }
     Item.text =text;
-    Item.tag = tag;
     Item.mydelagete = self;
     Item.frame = CGRectMake(frame.origin.x, frame.origin.y, Item.frame.size.width, Item.frame.size.height);
     [Item sizeToFit];

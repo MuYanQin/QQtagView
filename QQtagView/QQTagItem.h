@@ -7,17 +7,24 @@
 
 #import <UIKit/UIKit.h>
 //选中的颜色
-#define SelectColor  [UIColor purpleColor]
-//显示的颜色
-#define ShowColor  [UIColor lightGrayColor]
+#define selectedColor  [UIColor purpleColor]
+//未选中颜色
+#define defaultColor  [UIColor lightGrayColor]
 
 typedef NS_ENUM(NSInteger,QQTagStyle){
-    QQTagStyleSlect = 0,// 不可编辑的选中状态
-    QQTagStyleNone = 1,//不可编辑的无状态
-    QQTagStyleEditNone = 2,//可编辑的无状态
-    QQTagStyleEditSlect = 3,// 可编辑的选中状态
+    //以下是标明标签是否是选中状态的
+    QQTagStyleNone = 0,//不可编辑的无状态
+    QQTagStyleSelected = 1,// 不可编辑的选中状态
 
 };
+
+typedef NS_ENUM(NSInteger,QQViewStyle){
+    //以下是标明那个View是展示选中标签的
+    QQViewStyleNone = 0,//无状态
+    QQViewStyleSelected = 1,//选中状态
+    
+};
+
 @class QQTagItem;
 
 

@@ -21,7 +21,7 @@
 @interface QQTagView : UIView <QQTagItemDelegate>
 @property (nonatomic,weak) id<QQTagViewDelegate> delegate;
 
-@property (nonatomic,assign) QQTagStyle Style;
+@property (nonatomic,assign) QQViewStyle Style;
 
 @property (nonatomic , strong) NSMutableArray * selectTagsArray;//
 @property(nonatomic, assign) CGFloat tagSpace;// space between two tag, default is 10
@@ -29,8 +29,8 @@
 @property(nonatomic) UIEdgeInsets padding; // container inner spacing, default is {10, 10, 10, 10}
 @property(nonatomic) UIEdgeInsets tagTextPadding; // tag text inner spaces, default is {3, 5, 3, 5}
 - (void)addTags:(NSArray *)tags;
-- (void)addLabel:(NSString *)text tag:(NSInteger)tag;
+- (void)addLabel:(NSString *)text;
 - (void)remove:(NSString *)text;
-- (void)changeTagStatus:(QQTagStyle)TagStyle string:(NSString *)string;
-- (instancetype)initWith:(QQTagStyle)TagViewStyle;
+- (void)changeItemString:(NSString *)string;
+- (instancetype)initWith:(QQViewStyle)TagViewStyle;
 @end

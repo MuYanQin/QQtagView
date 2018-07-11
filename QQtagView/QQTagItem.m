@@ -17,7 +17,7 @@
         self.textAlignment = NSTextAlignmentCenter;
         self.delegate = self;
         self.tintColor = [UIColor clearColor];
-        self.backgroundColor = ShowColor;
+        self.backgroundColor = defaultColor;
     }
     return self;
 }
@@ -28,10 +28,10 @@
     NSLog(@"string");
 //设置选中与正常颜色
     if (self.Style == QQTagStyleNone) {
-        self.backgroundColor = ShowColor;
-        self.Style = QQTagStyleSlect;
-    }else if(self.Style == QQTagStyleSlect){
-        self.backgroundColor = SelectColor ;
+        self.backgroundColor = selectedColor;
+        self.Style = QQTagStyleSelected;
+    }else if(self.Style == QQTagStyleSelected){
+        self.backgroundColor = defaultColor ;
         self.Style = QQTagStyleNone;
     }else {
         
@@ -45,10 +45,10 @@
 - (void)changeItemType:(QQTagStyle)tagType
 {
     if (tagType == QQTagStyleNone) {
-        self.backgroundColor = ShowColor;
-        _Style = QQTagStyleSlect;
-    }else if(tagType == QQTagStyleSlect){
-        self.backgroundColor = SelectColor ;
+        self.backgroundColor = selectedColor;
+        _Style = QQTagStyleSelected;
+    }else if(tagType == QQTagStyleSelected){
+        self.backgroundColor = defaultColor ;
         _Style = QQTagStyleNone;
     }else {
         
