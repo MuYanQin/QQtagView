@@ -124,6 +124,14 @@
 }
 - (void)buttonClick:(CustomBtn *)btn
 {
+    QQTagItem *Item = (QQTagItem *)btn.info;
+    //设置选中与正常颜色
+    if (Item.Style == QQTagStyleNone) {
+        Item.Style = QQTagStyleSelected;
+    }else if(Item.Style == QQTagStyleSelected){
+        Item.Style = QQTagStyleNone;
+    }
+
     [self QQTagItem:btn.info];
 }
 - (void)layoutSubviews {
