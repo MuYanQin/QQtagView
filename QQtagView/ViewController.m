@@ -7,15 +7,14 @@
 //213
 
 #import "ViewController.h"
-#import "QQTagView.h"
 
-
+#import "QYTagView.h"
 #define kMKScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kMKScreenHeight [UIScreen mainScreen].bounds.size.height
-@interface ViewController ()<QQTagViewDelegate>
+@interface ViewController ()<QYTagViewDelegate>
 @property(nonatomic, strong) UIView *tagForSelectContainer;
-@property(nonatomic, strong) QQTagView *QQSelect;
-@property(nonatomic, strong) QQTagView *HeaderView;
+@property (nonatomic , strong) QYTagView *tagView;
+@property (nonatomic , strong) QYTagView *tagViewForSelect;
 
 @end
 
@@ -24,41 +23,40 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    self.tagView = [[QYTagView alloc]initWithType:(noneStyle)];
+    self.tagView.frame = CGRectMake(0, 0, kMKScreenWidth, 0);
+    self.tagView.tagTextPadding = UIEdgeInsetsMake(10, 10, 10, 10);
+    self.tagView.delegate = self;
+    self.tagView.tag = 1;
+    [self.tagView addTags:@[@"6754674567", @"88888888", @"999",@"43243434",@"341234",@"777",@"743432523577"]];
+    [self.view addSubview:self.tagView];
+    
+    self.tagViewForSelect = [[QYTagView alloc] initWithType:deleteStyle];
+    self.tagViewForSelect.frame = CGRectMake(0, 250, kMKScreenWidth, 0);
+    self.tagViewForSelect.delegate = self;
+    self.tagViewForSelect.tag = 2;
+    self.tagViewForSelect.tagTextPadding = UIEdgeInsetsMake(10, 10, 10, 10);
+    [self.tagViewForSelect addTags:@[@"123", @"3123213", @"94543534599",@"645654",@"weqr3",@"tre43",@"3432fg"]];
+    [self.view addSubview:self.tagViewForSelect];
 
-    self.QQSelect = [[QQTagView alloc] init];
-    self.QQSelect.frame = CGRectMake(0, 0, kMKScreenWidth, 0);
-    self.QQSelect.delegate = self;
-    self.QQSelect .tag = 1;
-    [self.QQSelect addTags:@[@"6754674567", @"88888888", @"999",@"43243434",@"341234",@"777",@"743432523577"]];
-    [self.view addSubview:self.QQSelect];
-
-    self.HeaderView = [[QQTagView alloc] initWith:QQViewStyleSelected];
-    self.HeaderView.frame = CGRectMake(0, 250, kMKScreenWidth, 0);
-    self.HeaderView.delegate = self;
-    self.HeaderView.tag = 2;
-    [self.HeaderView addTags:@[@"123", @"3123213", @"94543534599",@"645654",@"weqr3",@"tre43",@"3432fg"]];
-    [self.view addSubview:self.HeaderView];
 }
 
-
-
-- (void)QQTagView:(QQTagView *)QQTagView QQTagItem:(QQTagItem *)QQTagItem
+- (void)QYTagView:(QYTagView *)tagView clickTagItem:(QYTagItem *)tagItem
 {
-    NSLog(@"%@",QQTagView.selectTagsArray);
-    if (QQTagView.tag ==1) {
-        if (QQTagItem.Style == QQTagStyleNone) {
-            [self.HeaderView  remove:QQTagItem.text];
+    if (tagView.tag ==1) {
+        if (tagItem.selected) {
+            [self.tagViewForSelect addLabel:tagItem.titleLabel.text];
         }else{
-            [self.HeaderView addLabel:QQTagItem.text];
+            [self.tagViewForSelect remove:tagItem.titleLabel.text];
         }
     }else{
-        [self.QQSelect changeItemString:QQTagItem.text];
+        [self.tagView changeItemString:tagItem.titleLabel.text];
     }
-
+    NSLog(@"%@",self.tagViewForSelect.selectTagsArray);
 }
-- (void)QQTagView:(QQTagView *)QQTagView sizeChange:(CGRect)newSize
+- (void)QYTagView:(QYTagView *)tagView frameChange:(CGRect)newframe
 {
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
