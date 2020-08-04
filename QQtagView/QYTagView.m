@@ -142,7 +142,20 @@
     }
 }
 - (void)layoutSubviews {
-    [UIView beginAnimations:nil context:nil];
+    
+    CGRect containerFrame = self.frame;
+    containerFrame.size.height = self.viewHeight;
+    if([self.delegate respondsToSelector:@selector(QYTagView:frameChange:)]) {
+        [self.delegate QYTagView:self frameChange:containerFrame];
+    }
+}
+
+- (BOOL)stringIsEquals:(NSString *)string to:(NSString *)string2 {
+    return [string isEqualToString:string2];
+}
+
+- (CGFloat)viewHeight
+{
     CGFloat paddingRight = self.padding.right;
     CGFloat cellspace = self.tagSpace;
     CGFloat y = self.padding.top;
@@ -169,20 +182,13 @@
         tag.frame = frame;
     }
     CGFloat containerHeight = frame.origin.y + frame.size.height + self.padding.bottom;
-    CGRect containerFrame = self.frame;
-    containerFrame.size.height = containerHeight;
-    self.frame = containerFrame;
-    if([self.delegate respondsToSelector:@selector(QYTagView:frameChange:)]) {
-        [self.delegate QYTagView:self frameChange:containerFrame];
+    if (self.subviews.count == 0) {
+        return 0;
+
+    }else{
+        return containerHeight;
     }
-    [UIView commitAnimations];
 }
-
-- (BOOL)stringIsEquals:(NSString *)string to:(NSString *)string2 {
-    return [string isEqualToString:string2];
-}
-
-
 UIColor * getColorWithHex(NSString *hex)
 {
     NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];

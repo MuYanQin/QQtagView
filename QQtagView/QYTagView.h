@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong) NSMutableArray * selectTagsArray;
 
 
+@property (nonatomic , assign) CGFloat  viewHeight;
+
 
 /// tag 距离视图的距离 container inner spacing, default is {10, 10, 10, 10}
 @property(nonatomic) UIEdgeInsets padding;
